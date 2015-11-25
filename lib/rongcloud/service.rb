@@ -67,6 +67,11 @@ module Rongcloud
 
     # 所有数据类的父类
     class Model
+
+      def initialize(opts = {})
+        opts.each { |k,v| instance_variable_set("@#{k}", v) }
+      end
+
       private
       #返回可选参数（为空的参数不返回）
       def optional_params(params)
