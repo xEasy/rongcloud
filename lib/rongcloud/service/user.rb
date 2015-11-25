@@ -24,6 +24,14 @@ module Rongcloud
         res = Rongcloud::Service.req_post(post)
         res[:code]==200
       end
+
+      #刷新用户信息
+      def check_online
+        Rongcloud::Service.req_post(
+          uri: Rongcloud::Service::API_URI[:USER_REFRESH],
+          params: optional_params({userId: self.user_id})
+        )
+      end
     end
   end
 end
